@@ -10,12 +10,7 @@ export default StyleSheet.create({
   container: {
     paddingBottom: Metrics.baseMargin
   },
-  logo: {
-    marginTop: Metrics.doubleSection,
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain'
-  },
+
   centered: {
     flex: 1,
     justifyContent: 'center',
@@ -25,7 +20,8 @@ export default StyleSheet.create({
   gridContainer: {
     width: gridContainerWidth,
     height: gridContainerWidth,
-    backgroundColor: Colors.fire,
+    // backgroundColor: Colors.panther,
+    backgroundColor: 'transparent',
     marginHorizontal: Metrics.section,
     marginVertical: Metrics.baseMargin,
     borderRadius: 10,
@@ -35,7 +31,7 @@ export default StyleSheet.create({
   gridCell: {
     width: gridCellWidth,
     height: gridCellWidth,
-    backgroundColor: Colors.frost,
+    backgroundColor: Colors.fire,
     marginHorizontal: gridGutterSize,
     marginVertical: gridGutterSize,
     borderRadius: 8,
