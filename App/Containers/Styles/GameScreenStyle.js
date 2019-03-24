@@ -1,10 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { Metrics, Colors, ApplicationStyles } from '../../Themes/'
 
-const gridContainerWidth = Metrics.screenWidth - 2 * Metrics.section,
-      gridGutterSize = 2,
-      gridCellWidth = gridContainerWidth / 4 - 2 * gridGutterSize;
-
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
@@ -18,22 +14,23 @@ export default StyleSheet.create({
   },
 
   gridContainer: {
-    width: gridContainerWidth,
-    height: gridContainerWidth,
+    width: Metrics.gridContainerWidth,
+    height: Metrics.gridContainerWidth,
     // backgroundColor: Colors.panther,
     backgroundColor: 'transparent',
     marginHorizontal: Metrics.section,
     marginVertical: Metrics.baseMargin,
     borderRadius: 10,
     flexWrap: 'wrap',
+    flexDirection: 'row',
   },
 
   gridCell: {
-    width: gridCellWidth,
-    height: gridCellWidth,
+    width: Metrics.gridCellWidth,
+    height: Metrics.gridCellWidth,
     backgroundColor: Colors.fire,
-    marginHorizontal: gridGutterSize,
-    marginVertical: gridGutterSize,
+    marginHorizontal: Metrics.gridGutterSize,
+    marginVertical: Metrics.gridGutterSize,
     borderRadius: 8,
   }
   
