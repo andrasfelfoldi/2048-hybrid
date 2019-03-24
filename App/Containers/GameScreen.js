@@ -57,7 +57,7 @@ class GameScreen extends Component {
 
         addedNumberPosition = remainingPositions[getRandomInt(0, remainingPositions.length)];
         newNumbers[addedNumberPosition.row][addedNumberPosition.col] = 2;
-        this.setState({numbers: moveNumbers(this.state.numbers, 'right')});
+        this.setState({numbers: newNumbers});
       }
     })
   }
