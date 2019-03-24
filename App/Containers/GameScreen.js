@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import RoundedButton from "../Components/RoundedButton";
 import { Images } from '../Themes'
 import { moveNumbers } from "../Utils/GridActions";
+import { getRandomInt } from "../Utils/RandomGenerator";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -26,34 +27,37 @@ class GameScreen extends Component {
       onPanResponderRelease: (evt, gestureState) => {
         let x = gestureState.dx;
         let y = gestureState.dy;
+        let newNumbers,
+            remainingPositions = [];
+
         if (Math.abs(x) > Math.abs(y)) {
           if (x >= 0) {
-            this.setState({numbers: moveNumbers(this.state.numbers, 'right')});
-
-            // this.setState({text: 'right'});
-            // this.props.onSwipePerformed('right')
+            newNumbers = moveNumbers(this.state.numbers, 'right');
           }
           else {
-            this.setState({numbers: moveNumbers(this.state.numbers, 'left')});
-
-            // this.setState({text: 'left'});
-            // this.props.onSwipePerformed('left')
+            newNumbers = moveNumbers(this.state.numbers, 'left');
           }
         }
         else {
           if (y >= 0) {
-            this.setState({numbers: moveNumbers(this.state.numbers, 'down')});
-
-            // this.setState({text: 'down'});
-            // this.props.onSwipePerformed('down')
+            newNumbers = moveNumbers(this.state.numbers, 'down');
           }
           else {
-            this.setState({numbers: moveNumbers(this.state.numbers, 'up')});
-
-            // this.setState({text: 'up'});
-            // this.props.onSwipePerformed('up')
+            newNumbers = moveNumbers(this.state.numbers, 'up');
           }
         }
+
+        newNumbers.forEach((row, i) => {
+          row.forEach((num, j) => {
+            if(num === 0){
+              remainingPositions.push({row: i, col: j});
+            }
+          });
+        });
+
+        addedNumberPosition = remainingPositions[getRandomInt(0, remainingPositions.length)];
+        newNumbers[addedNumberPosition.row][addedNumberPosition.col] = 2;
+        this.setState({numbers: moveNumbers(this.state.numbers, 'right')});
       }
     })
   }
