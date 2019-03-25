@@ -62,27 +62,12 @@ class GameScreen extends Component {
     })
   }
 
-  getGridCells = () => {
-    let cells = [];
-
-    for(let i=0; i<16; i++){
-      cells.push(
-        <View key={i} style={styles.gridCell}>
-          <NumberCell number={2}/>
-        </View>
-      );
-    }
-
-    return cells;
-  }
-
   render () {
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <View style={styles.centered}>
             <View style={styles.gridContainer} {...this.PanResponder.panHandlers}>
-              {/* {this.getGridCells()} */}
               {this.state.numbers.map((row, i) => 
                 row.map((number, j) => 
                   <View key={`${i}${j}`} style={styles.gridCell}>
